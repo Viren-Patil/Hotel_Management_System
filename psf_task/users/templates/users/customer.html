@@ -1,8 +1,15 @@
 {% extends "main/base.html" %}
 {% load crispy_forms_tags %}
+{% block additional_styles %}
+<style>
+  body {
+    background: url('/static/main/photos/background_pattern2.jpg');
+  }
+</style>
+{% endblock %}
 {% block content %}
 <div class="col-md-8 mx-auto">
-  <div class="content-section" style="background-color: wheat;">
+  <div class="content-section" style="opacity: 0.9; color:black; ">
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <fieldset class="form-group">

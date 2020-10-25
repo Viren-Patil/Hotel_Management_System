@@ -1,8 +1,9 @@
 {% extends "main/base_login.html" %}
+{% load static%}
 
 {% load crispy_forms_tags %}
 {% block content %}
-    <div class="content-section" style="border: 1px solid #0a2642; border-radius: 15px;">
+    <div class="content-section" style="border: 1px solid #0a2642; border-radius: 15px; opacity: 0.9;">
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
@@ -24,3 +25,4 @@
         </div>
     </div>
 {% endblock content %}
+

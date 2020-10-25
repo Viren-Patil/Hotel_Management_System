@@ -1,0 +1,43 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block additional_styles %}
+<style>
+   body {
+        background: url('/static/main/photos/background_pattern2.jpg') ;
+   }
+</style>
+{% endblock %}
+{% block content %} 
+<h4 style="text-align: center; text-decoration: underline; color: white;">GALLERY</h4><br>
+<div class="row">
+	{% for image in imagelist %}
+		<div class="col-md-4">
+			<article class="media content-section box-shadow" style="padding: 0%; border-radius: 15px;">
+				<div class="media-body">
+					<div class="img-hover-zoom" style="border-radius: 15px;">
+						{% if image == "room1" %}
+							<img src="{% static 'main/photos/ac.jpg' %}" alt="">
+						{% elif image == "room2" %}
+							<img src="{% static 'main/photos/deluxe.jpg' %}" alt="">
+						{% elif image == "room3" %}
+							<img src="{% static 'main/photos/king.jpg' %}" alt="">
+						{% elif image == "restaurant" %}
+							<img src="{% static 'main/photos/restaurant.jpg' %}" alt="">
+						{% elif image == "pool" %}
+							<img src="{% static 'main/photos/pool.jpg' %}" alt="">
+						{% elif image == "hotel" %}
+							<img src="{% static 'main/photos/tryy.jpg' %}" alt="">
+						{% elif image == "buffe" %}
+							<img src="{% static 'main/photos/buffe.jpg' %}" alt="">
+						{% elif image == "lobby" %}
+							<img src="{% static 'main/photos/lobby.jpeg' %}" alt="">
+						{% elif image == "reception" %}
+							<img src="{% static 'main/photos/reception.jpg' %}" alt="">
+						{% endif %}
+					</div>
+				</div>
+			</article>
+		</div>
+	{% endfor %}
+</div>
+{% endblock content %}

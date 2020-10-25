@@ -18,15 +18,17 @@
     {% else %}
       <title>HMS</title>
     {% endif %}
-    <style>
-      .box-shadow {
-        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.08);
-        transition: box-shadow 0.1s ease-in-out;
-      }
-      .box-shadow:hover {
-        box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.2);
-      }
-    </style>
+    {% block additional_styles %}
+      <style>
+         .box-shadow {
+          box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.08);
+          transition: box-shadow 0.1s ease-in-out;
+        }
+        .box-shadow:hover {
+          box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.2);
+        }
+      </style>
+    {% endblock %}
   </head>
   <body>
   <header class="site-header">
@@ -47,7 +49,7 @@
             <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">Services</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               {% if user.profile.get_validity %}
-                <a href="{% url 'booking_view' %}" class="dropdown-item"><i class="fas fa-bed fa-lg mr-2"></i> Room Booking</a>
+                <a href="{% url 'booking_view' %}" class="dropdown-item"><i class="fas fa-bed fa-lg mr-2"></i> Book a Room</a>
                 <a href="{% url 'table_booking' %}" class="dropdown-item"><i class="fas fa-utensils fa-lg mr-3 ml-1"></i>Book a Table</a>
               {% else %}
                 <a href="{% url 'customer' %}" class="dropdown-item"><i class="fas fa-bed fa-lg mr-2"></i> Room Booking</a>
@@ -60,6 +62,9 @@
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'payment' %}" data-toggle="tooltip" data-placement="bottom" title="Bill Payment"><i class="far fa-credit-card fa-lg"></i></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'gallery' %}" data-toggle="tooltip" data-placement="bottom" title="Gallery"><i class="fas fa-images fa-lg"></i></a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'customer' %}" data-toggle="tooltip" data-placement="bottom" title="Customer Information"><i class="fas fa-user-circle fa-lg"></i></a>

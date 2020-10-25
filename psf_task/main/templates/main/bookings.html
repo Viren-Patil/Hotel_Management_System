@@ -1,20 +1,27 @@
 {% extends "main/base.html" %} 
 {% load crispy_forms_tags %}
 {% load static %}
+{% block additional_styles %}
+<style>
+   body {
+        background: url('/static/main/photos/background_pattern2.jpg') ;
+   }
+</style>
+{% endblock %}
 {% block content %}
 
 <center>
-  <button class="tablink btn btn-outline-secondary mb-3 mr-3" onclick="openPage('MY ROOM BOOKINGS', this, 'white')" id="defaultOpen">MY ROOM BOOKINGS</button>
-  <button class="tablink btn btn-outline-secondary mb-3" onclick="openPage('MY TABLE BOOKINGS', this, 'white')">MY TABLE BOOKINGS</button>
+  <button class="tablink btn btn-outline-light mb-3 mr-3" onclick="openPage('MY ROOM BOOKINGS', this, 'white')" id="defaultOpen">MY ROOM BOOKINGS</button>
+  <button class="tablink btn btn-outline-light mb-3" onclick="openPage('MY TABLE BOOKINGS', this, 'white')">MY TABLE BOOKINGS</button>
 </center>
 
 <div class="tabcontent" id="MY ROOM BOOKINGS">
-<h3 style="text-align: center;">MY ROOM BOOKINGS ({{bookings.count}})</h3>
+<h3 style="text-align: center; color: white;">MY ROOM BOOKINGS ({{bookings.count}})</h3>
 <hr/>
 <div class="row">
   {% for booking in bookings %}
       <div class="col-md-6">
-        <article class="media content-section box-shadow" style="padding: 0%; border-radius: 15px;">
+        <article class="media content-section box-shadow" style="padding: 0%; border-radius: 15px; opacity: 0.8; filter: alpha(opacity=40);">
           <div class="media-body">
             <div class="img-hover-zoom" style="border-radius: 15px;">
               {% if booking.room.get_image == 'ac' %}
@@ -52,13 +59,23 @@
 </div>
 
 <div class="tabcontent" id="MY TABLE BOOKINGS">
-<h3 style="text-align: center;">MY TABLE BOOKINGS ({{table_booking_list.count}})</h3>
+<h3 style="text-align: center; color: white;">MY TABLE BOOKINGS ({{table_booking_list.count}})</h3>
 <hr/>
 <div class="row">
     {% for table in table_booking_list %}
     <div class="col-md-6">
-        <article class="media content-section box-shadow" style="border-radius: 15px; border: 1.5px solid #0a2642">
+        <article class="media content-section box-shadow" style="border-radius: 15px; padding: 0%; opacity: 0.8; filter: alpha(opacity=40);">
             <div class="media-body">
+              <div class="img-hover-zoom" style="border-radius: 15px;">
+                {% if table.bkng.room.capacity == 1 %}
+                  <img src="{% static 'main/photos/t2.jpg' %}" alt="">
+                {% elif table.bkng.room.capacity == 2 %}
+                  <img src="{% static 'main/photos/t3.jpg' %}" alt="">
+                {% elif table.bkng.room.capacity == 3 %}
+                  <img src="{% static 'main/photos/t4.png' %}" alt="">
+                {% endif %}
+              </div>
+              <div style="padding: 20px;">
               <p class="article-content" data-toggle="tooltip" data-placement="bottom" title="Booking Details"
             style=" word-break:break-all; word-wrap: break-word;">
                 {{ table.bkng.room.number }} - {{ table.bkng.room.get_category }}
@@ -70,7 +87,8 @@
                 {% endif %}
                 </p>
                 <a class="btn btn-outline-danger" href="{% url 'cancel_table_booking_view' table.pk %}">Cancel Booking</a>
-            </div>
+              </div>
+              </div>
         </article>
     </div>
     {% endfor %}

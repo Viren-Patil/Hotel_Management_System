@@ -25,6 +25,7 @@ class RoomList(ListView):
 
         return render(request, self.template_name, {'title':'Home', 'room_list': roomlist, 'number_of_rooms': len(roomlist)})
 
+
 @method_decorator(login_required, name='dispatch')
 @method_decorator(allowed_users(allowed_roles=['Customer']), name='dispatch')
 class BookingView(FormView):
@@ -143,7 +144,6 @@ def payment(request):
             room_cost = bk.get_cost()
             table_bill += room_cost
             payment_list.append([bk.room.number, bk.room.get_category(), bk.room.capacity, bk.room.beds, bk.check_in, bk.check_out, bk.room.price, table, table_empty, room_cost, table_bill])
-        
     return render(request, 'main/payment.html', {'title': 'Payment', 'empty': empty, 'payment_list': payment_list})
 
 @login_required
@@ -156,4 +156,13 @@ def bookings(request):
 def about(request):
      return render(request, 'main/about.html', {'title': 'About'})
 
+@login_required
+@allowed_users(allowed_roles=['Customer'])
+def gallery(request):
+    image_List = ["hotel", "pool", "restaurant", "buffe", "lobby", "reception", "room1", "room2", "room3"]
+    return render(request, 'main/gallery.html', {'imagelist':image_List})
 
+@login_required
+@allowed_users(allowed_roles=['Customer'])
+def welcome(request):
+    return render(request, 'main/welcome.html')
