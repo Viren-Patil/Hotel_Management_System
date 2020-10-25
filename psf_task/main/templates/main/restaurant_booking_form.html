@@ -1,0 +1,17 @@
+{% extends "main/base.html" %} 
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section col-md-6 mx-auto" style="border: 1px solid #0a2642; border-radius: 15px;">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom">Restaurant Table Booking</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Book</button>
+            <a class="btn btn-outline-secondary" href="{% url 'main-home' %}">Go Back</a>
+        </div>
+    </form>
+</div>
+{% endblock content %}

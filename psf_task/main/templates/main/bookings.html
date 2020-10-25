@@ -1,0 +1,79 @@
+{% extends "main/base.html" %} 
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<center>
+  <button class="tablink btn btn-outline-secondary mb-3 mr-3" onclick="openPage('MY ROOM BOOKINGS', this, 'white')" id="defaultOpen">MY ROOM BOOKINGS</button>
+  <button class="tablink btn btn-outline-secondary mb-3" onclick="openPage('MY TABLE BOOKINGS', this, 'white')">MY TABLE BOOKINGS</button>
+</center>
+
+<div class="tabcontent" id="MY ROOM BOOKINGS">
+<h3 style="text-align: center;">MY ROOM BOOKINGS ({{bookings.count}})</h3>
+<hr/>
+<div class="row">
+  {% for booking in bookings %}
+      <div class="col-md-6">
+        <article class="media content-section box-shadow" style="padding: 0%; border-radius: 15px;">
+          <div class="media-body">
+            <div class="img-hover-zoom" style="border-radius: 15px;">
+              {% if booking.room.get_image == 'ac' %}
+                <img src="{% static 'main/photos/ac.jpg' %}" alt="">
+              {% elif booking.room.get_image == 'nonac' %}
+                <img src="{% static 'main/photos/nonac.jpg' %}" alt="">
+              {% elif booking.room.get_image == 'deluxe' %}
+                <img src="{% static 'main/photos/deluxe.jpg' %}" alt="">
+              {% elif booking.room.get_image == 'king' %}
+                <img src="{% static 'main/photos/king.jpg' %}" alt="">
+              {% elif booking.room.get_image == 'queen' %}
+                <img src="{% static 'main/photos/queen.jpg' %}" alt="">
+              {% endif %}
+            </div>
+            <div style="padding: 20px;">
+              <p class="article-content" data-toggle="tooltip" data-placement="bottom" title="Booking Details"
+              style=" word-break:break-all; word-wrap: break-word;">Room Number: {{booking.room.number}}
+                Category: {{booking.room.get_category}}
+                Beds: {{booking.room.beds}}
+                Capacity: {{booking.room.capacity}}
+                Check-in Date: {{booking.check_in}}
+                Check-out Date: {{booking.check_out}}
+                Price/night: {{booking.room.price}} INR
+                Total Cost (Room Stay): {{booking.get_cost}} INR
+              </p>
+              <center>
+                <a class="btn btn-outline-danger" href="{% url 'cancel_booking_view' booking.pk %}">Cancel Booking</a>
+              </center>
+            </div>
+          </div>
+        </article>
+      </div>
+  {% endfor %}
+</div>
+</div>
+
+<div class="tabcontent" id="MY TABLE BOOKINGS">
+<h3 style="text-align: center;">MY TABLE BOOKINGS ({{table_booking_list.count}})</h3>
+<hr/>
+<div class="row">
+    {% for table in table_booking_list %}
+    <div class="col-md-6">
+        <article class="media content-section box-shadow" style="border-radius: 15px; border: 1.5px solid #0a2642">
+            <div class="media-body">
+              <p class="article-content" data-toggle="tooltip" data-placement="bottom" title="Booking Details"
+            style=" word-break:break-all; word-wrap: break-word;">
+                {{ table.bkng.room.number }} - {{ table.bkng.room.get_category }}
+                Booking time: {{ table.time }}
+                {% if table.food_cost == None %}
+                    Food Cost(Currently): 0 INR 
+                {% else %}
+                    Food Cost(Currently): {{ table.food_cost }} INR
+                {% endif %}
+                </p>
+                <a class="btn btn-outline-danger" href="{% url 'cancel_table_booking_view' table.pk %}">Cancel Booking</a>
+            </div>
+        </article>
+    </div>
+    {% endfor %}
+</div>
+</div>
+{% endblock content %}

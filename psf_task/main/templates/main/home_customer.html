@@ -1,0 +1,38 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %} 
+    <h4 style="text-align: center; text-decoration: underline;">TOTAL {{ number_of_rooms }} CATEGORY OF ROOMS</h4>
+    <hr/>
+    <div class="row">
+      {% for room in room_list %}
+          <div class="col-md-6">
+            <article class="media content-section box-shadow" style="padding: 0%; border-radius: 15px;">
+              <div class="media-body">
+                <div class="img-hover-zoom" style="border-radius: 15px;">
+                  {% if room.get_image == 'ac' %}
+                    <img src="{% static 'main/photos/ac.jpg' %}" alt="">
+                  {% elif room.get_image == 'nonac' %}
+                    <img src="{% static 'main/photos/nonac.jpg' %}" alt="">
+                  {% elif room.get_image == 'deluxe' %}
+                    <img src="{% static 'main/photos/deluxe.jpg' %}" alt="">
+                  {% elif room.get_image == 'king' %}
+                    <img src="{% static 'main/photos/king.jpg' %}" alt="">
+                  {% elif room.get_image == 'queen' %}
+                    <img src="{% static 'main/photos/queen.jpg' %}" alt="">
+                  {% endif %}
+                </div>
+                <div style="padding: 20px;">
+                  <p class="article-content" data-toggle="tooltip" data-placement="bottom" title="Room details"
+                  style=" word-break:break-all; word-wrap: break-word;">
+                    Category: {{room.get_category}}
+                    Beds: {{room.beds}}
+                    Capacity: {{room.capacity}}
+                    Price/night: {{room.price}} INR
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+      {% endfor %}
+    </div>
+{% endblock content %}

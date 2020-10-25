@@ -1,0 +1,28 @@
+{% extends "main/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom">Delete Booking</legend>
+                <h4 style="font-weight: normal;">Are you sure you want to cancel this booking?</h4>
+                <p>
+                    <b>Booking Details:</b>
+                    <br/>
+                    Category: {{object.room.get_category}}
+                    <br/>
+                    Check-in date: {{object.check_in}}
+                    <br/>
+                    Check-out date: {{object.check_out}}
+                    <br/>
+                    Total Cost: {{object.get_cost}} INR
+                </p>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Cancel Booking</button>
+                <a class="btn btn-outline-secondary" href="{% url 'bookings' %}">Go Back</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
