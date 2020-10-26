@@ -9,6 +9,7 @@ from .decorators import unauthenticated_user, allowed_users, student_only
 from .forms import AvailabilityForm, TableBookingForm
 from django.contrib import messages
 from main.booking_functions.availability import check_availability
+import datetime
 
 @method_decorator(login_required, name='dispatch')
 @method_decorator(allowed_users(allowed_roles=['Customer']), name='dispatch')
@@ -134,16 +135,17 @@ def payment(request):
         empty = True
     else:
         for bk in bookings:
-            table_bill = 0
-            table = Restaurant.objects.filter(bkng=bk)
-            if len(table) == 0:
-                table_empty = True
-            for t in table:
-                if t.food_cost != None:
-                    table_bill += t.food_cost
-            room_cost = bk.get_cost()
-            table_bill += room_cost
-            payment_list.append([bk.room.number, bk.room.get_category(), bk.room.capacity, bk.room.beds, bk.check_in, bk.check_out, bk.room.price, table, table_empty, room_cost, table_bill])
+            if datetime.date.today() >= bk.check_in and datetime.date.today() <= bk.check_out:
+                table_bill = 0
+                table = Restaurant.objects.filter(bkng=bk)
+                if len(table) == 0:
+                    table_empty = True
+                for t in table:
+                    if t.food_cost != None:
+                        table_bill += t.food_cost
+                room_cost = bk.get_cost()
+                table_bill += room_cost
+                payment_list.append([bk.room.number, bk.room.get_category(), bk.room.capacity, bk.room.beds, bk.check_in, bk.check_out, bk.room.price, table, table_empty, room_cost, table_bill])
     return render(request, 'main/payment.html', {'title': 'Payment', 'empty': empty, 'payment_list': payment_list})
 
 @login_required
