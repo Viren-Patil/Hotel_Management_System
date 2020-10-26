@@ -4,6 +4,7 @@
 <style>
   body {
     background: url('/static/main/photos/background_pattern2.jpg');
+    background-color: rgba(0,0,0,0.5);
   }
 </style>
 {% endblock %}
@@ -13,7 +14,7 @@
     <div class="row">
       {% for room in room_list %}
           <div class="col-md-6">
-            <article class="media content-section box-shadow" style="padding: 0%; border-radius: 15px; opacity: 0.8;">
+            <article class="media content-section box-shadow" style="padding: 0%; border-radius: 15px;">
               <div class="media-body">
                 <div class="img-hover-zoom" style="border-radius: 15px;">
                   {% if room.get_image == 'ac' %}
