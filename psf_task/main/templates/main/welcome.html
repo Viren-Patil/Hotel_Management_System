@@ -4,11 +4,17 @@
 {% block additional_styles %}
 <style>
    body {
-        background: url('/static/main/photos/background_pattern2.jpg') ;
+        background: url('/static/main/photos/background_pattern2.jpg') rgba(0, 0, 0, 0.3);
+        background-blend-mode: multiply;
    }
 </style>
 {% endblock %}
 {% block content %}
+<center>
+	<div class="form-group" >
+		<a class="btn btn-outline-light"href="{% url 'main-home' %}" >Book a Room!</a>
+	</div>
+</center>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 	<ol class="carousel-indicators">
 	  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -24,8 +30,8 @@
 	  <div class="carousel-item active">
 		<img class="d-block w-100" src="{% static 'main/photos/lobby.jpeg' %}" alt="First slide">
 		<div class="carousel-caption d-none d-md-block">
-			<h5 style="color: black; font-weight: bold;">Welcome to our Website!</h5>
-			<p style="color: black; font-weight: bold;">Go ahead and book a room</p>
+			<h5 style="color: white; font-weight: bold;">Welcome to our Website!</h5>
+			<p style="color: white; font-weight: bold;">Go ahead and book a room</p>
 		</div>
 		</div>
 	  <div class="carousel-item ">
@@ -57,9 +63,4 @@
 	</a>
   </div>
   <br>
-  <center>
-	<div class="form-group" >
-		<a class="btn btn-outline-dark"href="{% url 'main-home' %}" >Book a Room!</a>
-	</div>
-</center>
-  {% endblock content %}
+{% endblock content %}

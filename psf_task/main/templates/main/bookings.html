@@ -4,7 +4,8 @@
 {% block additional_styles %}
 <style>
    body {
-        background: url('/static/main/photos/background_pattern2.jpg') ;
+        background: url('/static/main/photos/background_pattern2.jpg') rgba(0, 0, 0, 0.3);
+        background-blend-mode: multiply;
    }
 </style>
 {% endblock %}
@@ -17,11 +18,10 @@
 
 <div class="tabcontent" id="MY ROOM BOOKINGS">
 <h3 style="text-align: center; color: white;">MY ROOM BOOKINGS ({{bookings.count}})</h3>
-<hr/>
 <div class="row">
   {% for booking in bookings %}
       <div class="col-md-6">
-        <article class="media content-section box-shadow" style="padding: 0%; border-radius: 15px; opacity: 0.8; filter: alpha(opacity=40);">
+        <article class="media content-section box-shadow" style="padding: 0%; border-radius: 15px;">
           <div class="media-body">
             <div class="img-hover-zoom" style="border-radius: 15px;">
               {% if booking.room.get_image == 'ac' %}
@@ -64,7 +64,7 @@
 <div class="row">
     {% for table in table_booking_list %}
     <div class="col-md-6">
-        <article class="media content-section box-shadow" style="border-radius: 15px; padding: 0%; opacity: 0.8; filter: alpha(opacity=40);">
+        <article class="media content-section box-shadow" style="border-radius: 15px; padding: 0%;">
             <div class="media-body">
               <div class="img-hover-zoom" style="border-radius: 15px;">
                 {% if table.bkng.room.capacity == 1 %}
@@ -79,12 +79,8 @@
               <p class="article-content" data-toggle="tooltip" data-placement="bottom" title="Booking Details"
             style=" word-break:break-all; word-wrap: break-word;">
                 {{ table.bkng.room.number }} - {{ table.bkng.room.get_category }}
+                {{ table.bkng.check_in }} - {{ table.bkng.check_out }}
                 Booking time: {{ table.time }}
-                {% if table.food_cost == None %}
-                    Food Cost(Currently): 0 INR 
-                {% else %}
-                    Food Cost(Currently): {{ table.food_cost }} INR
-                {% endif %}
                 </p>
                 <a class="btn btn-outline-danger" href="{% url 'cancel_table_booking_view' table.pk %}">Cancel Booking</a>
               </div>

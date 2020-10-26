@@ -3,7 +3,8 @@
 {% block additional_styles %}
 <style>
    body {
-        background: url('/static/main/photos/background_pattern2.jpg') ;
+        background: url('/static/main/photos/background_pattern2.jpg') rgba(0, 0, 0, 0.4);
+        background-blend-mode: multiply;
    }
 </style>
 {% endblock %}
@@ -12,28 +13,57 @@
 <div class="row">
 	{% for image in imagelist %}
 		<div class="col-md-4">
-			<article class="media content-section box-shadow" style="padding: 0%; border-radius: 15px;">
+			<article class="media content-section box-shadow" style="padding: 0%; border-radius: 15px; background: black;">
 				<div class="media-body">
-					<div class="img-hover-zoom" style="border-radius: 15px;">
-						{% if image == "room1" %}
-							<img src="{% static 'main/photos/ac.jpg' %}" alt="">
-						{% elif image == "room2" %}
-							<img src="{% static 'main/photos/deluxe.jpg' %}" alt="">
-						{% elif image == "room3" %}
-							<img src="{% static 'main/photos/king.jpg' %}" alt="">
-						{% elif image == "restaurant" %}
-							<img src="{% static 'main/photos/restaurant.jpg' %}" alt="">
-						{% elif image == "pool" %}
-							<img src="{% static 'main/photos/pool.jpg' %}" alt="">
-						{% elif image == "hotel" %}
-							<img src="{% static 'main/photos/login_bg.jpg' %}" alt="">
-						{% elif image == "buffe" %}
-							<img src="{% static 'main/photos/buffet.jpg' %}" alt="">
-						{% elif image == "lobby" %}
-							<img src="{% static 'main/photos/lobby.jpeg' %}" alt="">
-						{% elif image == "reception" %}
-							<img src="{% static 'main/photos/reception.jpg' %}" alt="">
-						{% endif %}
+					<div class="containerc">
+						<div class="img-hover-zoom" style="border-radius: 15px;">
+							{% if image == "room1" %}
+								<img src="{% static 'main/photos/ac.jpg' %}" width="100%" height="100%" class="image" alt="">
+								<div class="middle">
+									<h5 class="text">AC Room</h5>
+								</div>
+							{% elif image == "room2" %}
+								<img src="{% static 'main/photos/deluxe.jpg' %}" width="100%" height="100%" class="image" alt="">
+								<div class="middle">
+									<h5 class="text">Deluxe Room</h5>
+								</div>
+							{% elif image == "room3" %}
+								<img src="{% static 'main/photos/king.jpg' %}" width="100%" height="100%" class="image" alt="">
+								<div class="middle">
+									<h5 class="text">King Room</h5>
+								</div>
+							{% elif image == "restaurant" %}
+								<img src="{% static 'main/photos/restaurant.jpg' %}" width="100%" height="100%" class="image" alt="">
+								<div class="middle">
+									<h5 class="text">Restaurant</h5>
+								</div>
+							{% elif image == "pool" %}
+								<img src="{% static 'main/photos/pool.jpg' %}" width="100%" height="100%" class="image" alt="">
+								<div class="middle">
+									<h5 class="text">Pool</h5>
+								</div>
+							{% elif image == "hotel" %}
+								<img src="{% static 'main/photos/login_bg.jpg' %}" width="100%" height="100%" class="image" alt="">
+								<div class="middle">
+									<h5 class="text">Swimming Pool</h5>
+								</div>
+							{% elif image == "buffet" %}
+								<img src="{% static 'main/photos/buffet.jpg' %}" width="100%" height="100%" class="image" alt="">
+								<div class="middle">
+									<h5 class="text">Buffet</h5>
+								</div>
+							{% elif image == "lobby" %}
+								<img src="{% static 'main/photos/lobby.jpeg' %}" width="100%" height="100%" class="image" alt="">
+								<div class="middle">
+									<h5 class="text">Lobby</h5>
+								</div>
+							{% elif image == "reception" %}
+								<img src="{% static 'main/photos/reception.jpg' %}" width="100%" height="100%" class="image" alt="">
+								<div class="middle">
+									<h5 class="text">Reception</h5>
+								</div>
+							{% endif %}
+						</div>
 					</div>
 				</div>
 			</article>

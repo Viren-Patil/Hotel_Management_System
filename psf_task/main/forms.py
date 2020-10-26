@@ -46,18 +46,26 @@ class AvailabilityForm(forms.Form):
     check_in = forms.DateField(
         widget=forms.DateInput(     
             attrs={'type': 'date'} 
-        ),
-        validators=[present_or_future_checkin_date]
+        )
     )
     check_out = forms.DateField(
         widget=forms.DateInput(     
             attrs={'type': 'date'} 
-        ),
-        validators=[present_or_future_checkout_date]
+        )
     )
 
 class TableBookingForm(forms.Form):
     room = forms.IntegerField()
+    check_in = forms.DateField(
+        widget=forms.DateInput(     
+            attrs={'type': 'date'} 
+        )
+    )
+    check_out = forms.DateField(
+        widget=forms.DateInput(     
+            attrs={'type': 'date'} 
+        )
+    )
     time = forms.DateTimeField(
         widget=forms.DateTimeInput(     
             attrs={'type': 'datetime-local'} 
@@ -65,7 +73,14 @@ class TableBookingForm(forms.Form):
         validators=[present_or_future_datetime]
     )
 
-# class TableBookingForm(forms.ModelForm):
-#     class Meta:
-#         model = Restaurant
-#         fields = ['bkng', 'time']
+class FeedbackForm(forms.Form):
+    RATING_CHOICES = (
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+    )
+    room = room = forms.IntegerField()
+    rating = forms.ChoiceField(choices=RATING_CHOICES, required=True)
+    suggestions_or_complaints = forms.CharField(widget=forms.Textarea)

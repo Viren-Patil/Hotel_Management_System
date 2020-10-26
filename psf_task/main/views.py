@@ -3,10 +3,10 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.views.generic import ListView, FormView, DeleteView
-from .models import Room, Booking, Restaurant
+from .models import Room, Booking, Restaurant, Feedback
 from django.utils.decorators import method_decorator
 from .decorators import unauthenticated_user, allowed_users, student_only
-from .forms import AvailabilityForm, TableBookingForm
+from .forms import AvailabilityForm, TableBookingForm, FeedbackForm
 from django.contrib import messages
 from main.booking_functions.availability import check_availability
 import datetime
@@ -91,12 +91,12 @@ class RestaurantView(FormView):
             display_rooms.append(booking.room.number)
         flag = 0
         for r in rooms:
-            if r[0] == data['room']:
+            if r[0] == data['room'] and r[1].check_in == data['check_in'] and r[1].check_out == data['check_out']:
                 flag = 1
                 bkng = r[1]
+                break
 
         if flag == 1:
-            print(data['time'].date())
             if data['time'].date() < bkng.check_in or data['time'].date() > bkng.check_out:
                 messages.error(self.request, f"You can book a table only between your check-in and check-out date of the room number that you enter in the form!")
                 return redirect('table_booking')
@@ -115,6 +115,29 @@ class RestaurantView(FormView):
                 f"Sorry you don't seem to have a booking with room number {data['room']} Your bookings: {display_rooms}"
             )
             return redirect('table_booking')
+
+@method_decorator(login_required, name='dispatch')
+@method_decorator(allowed_users(allowed_roles=['Customer']), name='dispatch')
+class FeedbackView(FormView):
+    form_class = FeedbackForm
+    template_name = 'main/feedback_form.html'
+    def delete_entry(self, u, room):
+        bkngs = Booking.objects.filter(user=u)
+        for b in bkngs:
+            if b.check_out == datetime.date.today() and b.room.number == room:
+                b.delete()
+                
+    def form_valid(self, form):
+        data = form.cleaned_data
+        feedback = Feedback.objects.create(
+            user = self.request.user,
+            rating = data['rating'],
+            suggestion = data['suggestions_or_complaints']
+        )
+        feedback.save()
+        self.delete_entry(self.request.user, data['room'])
+        messages.success(self.request, f'You have given the feedback successfully! :)')
+        return redirect('welcome')
 
 class CancelBookingView(DeleteView):
     model = Booking
@@ -145,7 +168,10 @@ def payment(request):
                         table_bill += t.food_cost
                 room_cost = bk.get_cost()
                 table_bill += room_cost
-                payment_list.append([bk.room.number, bk.room.get_category(), bk.room.capacity, bk.room.beds, bk.check_in, bk.check_out, bk.room.price, table, table_empty, room_cost, table_bill])
+                payment_list.append([bk.room.number, bk.room.get_category(), bk.room.capacity, bk.room.beds, bk.check_in, bk.check_out, bk.room.price, table, table_empty, room_cost, table_bill, datetime.date.today()])
+        
+        for p in payment_list:
+            print(p)
     return render(request, 'main/payment.html', {'title': 'Payment', 'empty': empty, 'payment_list': payment_list})
 
 @login_required
@@ -161,7 +187,7 @@ def about(request):
 @login_required
 @allowed_users(allowed_roles=['Customer'])
 def gallery(request):
-    image_List = ["hotel", "pool", "restaurant", "buffe", "lobby", "reception", "room1", "room2", "room3"]
+    image_List = ["hotel", "pool", "restaurant", "buffet", "lobby", "reception", "room1", "room2", "room3"]
     return render(request, 'main/gallery.html', {'imagelist':image_List})
 
 @login_required

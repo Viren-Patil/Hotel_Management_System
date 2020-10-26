@@ -1,11 +1,9 @@
 {% extends "main/base_login.html" %}
 {% block content %}
-<div class="content-section" style="border: 1px solid #0a2642; border-radius: 15px; opacity: 0.9;">
-    <h3>You have been logged out!</h3>
-    <div class="border-top pt-3">
-        <small class="text-muted">
-            <a class="btn btn-outline-primary" href="{% url 'login' %}">Log In Again</a>
-        </small>
+<div class="content-section" style="border: 1px solid #0a2642; border-radius: 15px; opacity: 0.9; margin-top: 230px;">
+    <h3 style="text-align: center; color: #0a2642;">You have been logged out!</h3>
+    <div class="border-top pt-3" style="text-align: center;">
+        <a class="btn btn-outline-primary" href="{% url 'login' %}">Log In Again</a>
     </div>
 </div>
 {% endblock content %}
