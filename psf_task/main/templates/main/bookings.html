@@ -17,7 +17,7 @@
 </center>
 
 <div class="tabcontent" id="MY ROOM BOOKINGS">
-<h3 style="text-align: center; color: white;">MY ROOM BOOKINGS ({{bookings.count}})</h3>
+<h3 style="text-align: center; font-family: Georgia, serif; font-weight: bold; color: white;">MY ROOM BOOKINGS ({{bookings.count}})</h3><br>
 <div class="row">
   {% for booking in bookings %}
       <div class="col-md-6">
@@ -38,7 +38,7 @@
             </div>
             <div style="padding: 20px;">
               <p class="article-content" data-toggle="tooltip" data-placement="bottom" title="Booking Details"
-              style=" word-break:break-all; word-wrap: break-word;">Room Number: {{booking.room.number}}
+              style=" word-break:break-all; word-wrap: break-word; font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold;">Room Number: {{booking.room.number}}
                 Category: {{booking.room.get_category}}
                 Beds: {{booking.room.beds}}
                 Capacity: {{booking.room.capacity}}
@@ -59,7 +59,7 @@
 </div>
 
 <div class="tabcontent" id="MY TABLE BOOKINGS">
-<h3 style="text-align: center; color: white;">MY TABLE BOOKINGS ({{table_booking_list.count}})</h3>
+<h3 style="text-align: center;font-family: Georgia, serif; font-weight: bold; color: white;">MY TABLE BOOKINGS ({{table_booking_list.count}})</h3>
 <hr/>
 <div class="row">
     {% for table in table_booking_list %}
@@ -77,7 +77,7 @@
               </div>
               <div style="padding: 20px;">
               <p class="article-content" data-toggle="tooltip" data-placement="bottom" title="Booking Details"
-            style=" word-break:break-all; word-wrap: break-word;">
+            style=" word-break:break-all; word-wrap: break-word; font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold;">
                 {{ table.bkng.room.number }} - {{ table.bkng.room.get_category }}
                 {{ table.bkng.check_in }} - {{ table.bkng.check_out }}
                 Booking time: {{ table.time }}

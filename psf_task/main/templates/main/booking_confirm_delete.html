@@ -13,9 +13,9 @@
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom">Delete Booking</legend>
-                <h4 style="font-weight: normal;">Are you sure you want to cancel this booking?</h4>
-                <p>
+                <legend class="border-bottom" style="font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bolder;">Delete Booking</legend>
+                <h4 style="font-weight: bold; font-family: serif;">Are you sure you want to cancel this booking?</h4>
+                <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold;">
                     <b>Booking Details:</b>
                     <br/>
                     Category: {{object.room.get_category}}

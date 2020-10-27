@@ -6,6 +6,10 @@
     background: url('/static/main/photos/background_pattern2.jpg') rgba(0, 0, 0, 0.4);
     background-blend-mode: multiply;
   }
+  h6{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold; 
+  }
 </style>
 {% endblock %}
 {% block content %}
@@ -26,7 +30,7 @@
           <div class="col-md-5 mx-auto">
             <article class="media content-section box-shadow" style="border-radius: 15px; border: 1.5px solid #0a2642; opacity: 0.9; color:white;">
               <div class="media-body">
-                <h5 style="text-align: center; text-decoration: underline; color: black;">Room Number {{p.0}}</h5>
+                <h5 style="text-align: center; font-family:Georgia, 'Times New Roman', Times, serif; font-weight: bold; text-decoration: underline; color: black;">Room Number {{p.0}}</h5><br>
                 <h6>Category: {{p.1}}</h6>
                 <h6>Capacity: {{p.2}}</h6>
                 <h6>Beds: {{p.3}}</h6>
@@ -45,7 +49,7 @@
                     {% endif %}
                   {% endfor %}
                 {% endif %}
-                <h5 style="text-align: center; margin-top: 20px;">Grand Total Payable: {{p.10}} INR</h5>
+                <h5 style="text-align: center; margin-top: 20px; font-weight: bold;">Grand Total Payable: {{p.10}} INR</h5>
               </div>
             </article>
           </div>

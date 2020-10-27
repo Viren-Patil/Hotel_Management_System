@@ -9,7 +9,7 @@
 </style>
 {% endblock %}
 {% block content %}
-    <h4 style="text-align: center; text-decoration: underline; color: white;">TOTAL {{ number_of_rooms }} CATEGORY OF ROOMS</h4>
+    <h4 style="text-align: center; font-family: cursive, sans-serif; font-weight: normal; text-decoration: underline; color: white;">TOTAL {{ number_of_rooms }} CATEGORY OF ROOMS</h4>
     <hr/>
     <div class="row">
       {% for room in room_list %}
@@ -48,7 +48,7 @@
                 </div>
                 <div style="padding: 20px; background: white; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px;">
                   <p class="article-content" data-toggle="tooltip" data-placement="bottom" title="Room details"
-                  style=" word-break:break-all; word-wrap: break-word;">
+                  style=" word-break:break-all; word-wrap: break-word; font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold;">
                     Beds: {{room.beds}}
                     Capacity: {{room.capacity}}
                     Price/night: {{room.price}} INR
