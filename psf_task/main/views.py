@@ -194,3 +194,8 @@ def gallery(request):
 @allowed_users(allowed_roles=['Customer'])
 def welcome(request):
     return render(request, 'main/welcome.html')
+
+@login_required
+@allowed_users(allowed_roles=['Customer'])
+def contact(request):
+    return render(request, 'main/contact.html')

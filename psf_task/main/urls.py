@@ -13,5 +13,6 @@ urlpatterns = [
     path('payment/', views.payment, name='payment'),
     path('feedback/', FeedbackView.as_view(), name='feedback'),
     path('about/', views.about, name='about'),
+    path('contact/', views.contact, name='contact'),
     path('gallery/', views.gallery, name='gallery'),
 ]
