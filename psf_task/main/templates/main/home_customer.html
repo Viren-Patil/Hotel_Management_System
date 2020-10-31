@@ -49,10 +49,30 @@
                 <div style="padding: 20px; background: white; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px;">
                   <p class="article-content" data-toggle="tooltip" data-placement="bottom" title="Room details"
                   style=" word-break:break-all; word-wrap: break-word; font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold;">
-                    Beds: {{room.beds}}
-                    Capacity: {{room.capacity}}
-                    Price/night: {{room.price}} INR
+                    <i class="fas fa-bed fa-lg" style="padding: 9px;"></i>{{room.beds}} bed(s)
+                    <i class="fas fa-user-friends fa-lg" style="padding: 11px;"></i> {{room.capacity}}
+                    <i class="fas fa-dollar-sign  fa-lg" style="padding: 12px;"></i> {{room.price}} INR / night 
                   </p>
+                  <center>
+                    <i class="fas fa-wifi" style="padding: 11px;" data-toggle="tooltip" data-placement="bottom" title="Wifi"></i> <b>|</b>
+                    <i class="fas fa-car" style="padding: 11px;" data-toggle="tooltip" data-placement="bottom" title="Parking"></i> <b>|</b>
+                    <i class="fas fa-utensils" style="padding: 11px;" data-toggle="tooltip" data-placement="bottom" title="Restaurant"></i> <b>|</b>
+                    {% if room.get_image == 'king' %}
+                      <i class="fas fa-mug-hot" style="padding: 11px;" data-toggle="tooltip" data-placement="bottom" title="Refreshments"></i> <b>|</b>
+                    {% elif room.get_image == 'queen' %}
+                      <i class="fas fa-mug-hot" style="padding: 11px;" data-toggle="tooltip" data-placement="bottom" title="Refreshments"></i> <b>|</b>
+                    {% endif %}
+                    {% if room.get_image == 'ac' %}
+                      <i class="fas fa-fan" style="padding: 11px;" data-toggle="tooltip" data-placement="bottom" title="AC"></i> <b>|</b>
+                    {% elif room.get_image == 'deluxe' %}
+                    <i class="fas fa-fan" style="padding: 11px;" data-toggle="tooltip" data-placement="bottom" title="AC"></i> <b>|</b>
+                    {% elif room.get_image == 'king' %}
+                    <i class="fas fa-fan" style="padding: 11px;" data-toggle="tooltip" data-placement="bottom" title="AC"></i> <b>|</b>
+                    {% elif room.get_image == 'queen' %}
+                    <i class="fas fa-fan" style="padding: 11px;" data-toggle="tooltip" data-placement="bottom" title="AC"></i> <b>|</b>
+                    {% endif %}
+                    <i class="fas fa-tv" style="padding: 11px;" data-toggle="tooltip" data-placement="bottom" title="TV"></i>
+                  </center>
                 </div>
               </div>
             </article>

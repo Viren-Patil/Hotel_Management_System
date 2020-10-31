@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'main/main_style.css' %}"/>
 
     <script src="https://kit.fontawesome.com/b08dd984f6.js" crossorigin="anonymous"></script>
-
     {% if title %}
       <title>{{ title }}</title>
     {% else %}
@@ -82,9 +81,31 @@
   </header>
 
     <main role="main" class="container">
+      <div id="spinner-box" class="text-center mt-3 ">
+        <div class="spinner-grow text-success spinner-border-sm" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success spinner-border-sm" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success spinner-border-sm" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success spinner-border-sm" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success spinner-border-sm" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success spinner-border-sm" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <div id="data-box">
       {% if messages %} {% for message in messages %}
       <div class="alert alert-{{message.tags}}" style="text-align: center;">{{ message }}</div>
       {% endfor %} {% endif %} {% block content %}{% endblock %}
+      </div>  
     </main>
 
     <script>
@@ -107,11 +128,15 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
+    <!-- <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
       crossorigin="anonymous"
-    ></script>
+    ></script> -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <script src= "/static/main/main.js" type="text/javascript"></script>
+    {% block javascript %}{% endblock %}
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
       integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"

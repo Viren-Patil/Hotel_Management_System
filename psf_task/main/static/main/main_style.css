@@ -161,3 +161,7 @@ body {
   -ms-transform: translate(-50%, -50%);
   text-align: center;
 }
+
+.not-visible {
+  display: none;
+}
