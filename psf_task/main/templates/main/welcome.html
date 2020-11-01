@@ -17,6 +17,10 @@
 		left: 0;
 		min-height: 100px;
 	}
+	/* .carousel-inner {
+		background: rgba(0, 0, 0, 0.3);
+		background-blend-mode: multiply;
+	} */
 </style>
 {% endblock %}
 {% block content %}
@@ -31,24 +35,24 @@
 
 	</ol>
 	<div class="carousel-inner">
-	  <div class="carousel-item active">
-		<img class="d-block w-100" src="{% static 'main/photos/hotel.jpg' %}" alt="First slide">
+	  <div class="carousel-item active" style="background: rgba(0, 0, 0, 1);">
+		<img class="d-block w-100" height="600px" src="{% static 'main/photos/hotel.jpg' %}" alt="First slide">
 		<div class="carousel-caption d-none d-md-block">
 			<h5 style="color: white; font-weight: bold;">Welcome to our Website!</h5>
-			<p style="color: white; font-weight: bold;">Go ahead and book a room</p>
+			<!-- <p style="color: white; font-weight: bold;">Go ahead and book a room</p> -->
 			<a class="btn btn-outline-light"href="{% url 'main-home' %}" >Book a Room!</a>
 		</div>
 		</div>
 	  <div class="carousel-item ">
-		<img class="d-block w-100" src="{% static 'main/photos/restaurant.jpg' %}" alt="Second slide">
+		<img class="d-block w-100" height="600px" src="{% static 'main/photos/restaurant.jpg' %}" alt="Second slide">
 		<div class="carousel-caption d-none d-md-block">
 			<h5 style="color: white; font-weight: bold;">Our Restaurant</h5>
-			<p style="color: white; font-weight: bold;">All Cuisine!</p>
-			<a class="btn btn-outline-light"href="{% url 'main-home' %}" >Book a Room!</a>
+			<!-- <p style="color: white; font-weight: bold;">All Cuisine!</p> -->
+			<a class="btn btn-outline-light mt-3"href="{% url 'main-home' %}" >Book a Room!</a>
 		</div>
 	  </div>
 	  <div class="carousel-item ">
-		<img class="d-block w-100" src="{% static 'main/photos/room.jpg' %}" alt="Third slide">
+		<img class="d-block w-100" height="600px" src="{% static 'main/photos/room.jpg' %}" alt="Third slide">
 		<div class="carousel-caption d-none d-md-block">
 			<h5 style="color: white; font-weight: bold;">Master Room!</h5>
 			<p style="color: white; font-weight: bold;">Enjoy the View</p>
@@ -56,21 +60,21 @@
 		</div>
 	  </div>
 	  <div class="carousel-item ">
-		<img class="d-block w-100" src="{% static 'main/photos/pool.jpg' %}" alt="Fourth slide">
+		<img class="d-block w-100" height="600px" src="{% static 'main/photos/pool.jpg' %}" alt="Fourth slide">
 		<div class="carousel-caption d-none d-md-block">
 			<h5 style="color: white; font-weight: bold;">Pool-side</h5>
 			<a class="btn btn-outline-light"href="{% url 'main-home' %}" >Book a Room!</a>
 		</div>
 	  </div>
 	  <div class="carousel-item ">
-		<img class="d-block w-100" src="{% static 'main/photos/background_pattern4.jpg' %}" alt="Fifth slide">
+		<img class="d-block w-100" height="600px" src="{% static 'main/photos/background_pattern4.jpg' %}" alt="Fifth slide">
 		<div class="carousel-caption d-none d-md-block">
 			<h5 style="color: white; font-weight: bold;">Terrace </h5>
 			<a class="btn btn-outline-light"href="{% url 'main-home' %}" >Book a Room!</a>
 		</div>
 	  </div>
 	  <div class="carousel-item">
-		<img class="d-block w-100" src="{% static 'main/photos/buffet.jpg' %}" alt="Sixth Slide">
+		<img class="d-block w-100" height="600px" src="{% static 'main/photos/buffet.jpg' %}" alt="Sixth Slide">
 		<div class="carousel-caption d-none d-md-block">
 			<h5 style="color: white; font-weight: bold;">Buffet</h5>
 			<a class="btn btn-outline-light"href="{% url 'main-home' %}" >Book a Room!</a>

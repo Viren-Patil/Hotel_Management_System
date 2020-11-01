@@ -46,12 +46,14 @@ class AvailabilityForm(forms.Form):
     check_in = forms.DateField(
         widget=forms.DateInput(     
             attrs={'type': 'date'} 
-        )
+        ),
+        validators=[present_or_future_checkin_date]
     )
     check_out = forms.DateField(
         widget=forms.DateInput(     
             attrs={'type': 'date'} 
-        )
+        ),
+        validators=[present_or_future_checkout_date]
     )
 
 class TableBookingForm(forms.Form):

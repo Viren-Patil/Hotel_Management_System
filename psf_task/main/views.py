@@ -170,8 +170,6 @@ def payment(request):
                 table_bill += room_cost
                 payment_list.append([bk.room.number, bk.room.get_category(), bk.room.capacity, bk.room.beds, bk.check_in, bk.check_out, bk.room.price, table, table_empty, room_cost, table_bill, datetime.date.today()])
         
-        for p in payment_list:
-            print(p)
     return render(request, 'main/payment.html', {'title': 'Payment', 'empty': empty, 'payment_list': payment_list})
 
 @login_required

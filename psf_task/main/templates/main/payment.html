@@ -54,9 +54,11 @@
             </article>
           </div>
     </div>
-    <center>
-      <a class="btn btn-outline-light" href="{% url 'feedback' %}">Proceed to Payment</a>
-    </center>
+    {% if p.5 == p.11 %}
+      <center>
+        <a class="btn btn-outline-light" href="{% url 'feedback' %}">Proceed to Payment</a>
+      </center>
+    {% endif %}
     </div>
   {% endfor %}
 {% endif %}
