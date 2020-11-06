@@ -27,6 +27,30 @@ This is a small application of a Hotel Management System having the following fe
 
 <img src="Screenshots/AfterNormalization.jpg" height="300">
 
+## Admin Side Features:
+
+1. Admin has full permissions and can update database anywhere he wants.
+2. Admin can't view customer account passwords.
+3. Admin can view Bookings of Rooms as well as Booking of Tables at the restaurant in the hotel.
+4. Admin has the authority to cancel any booking due to any reason.
+5. Admin has to update the food cost of a particular customer associated with the particular Table Booking.
+6. Admin can view the profile information (Username, first name, last name, email, date of birth, state, city, district, zip-code) of the customers.
+
+## User Side Feaures:
+
+1. User can Sign Up to create his/her account.
+2. User can Login to his/her account to avail further facilities.
+3. User can book a room in the hotel from the available categories.
+4. User can book a table in the restaurant only in the period of their stay.
+5. User can view the Gallery page for various images of the hotel and its facilities.
+6. User can view Payment (Bills) on the Payment Page.
+7. User can only book a room after updating the profile page completely.
+8. User can view all of their room as well as table bookings.
+9. User can cancel their room booking (Note: If a user cancels room booking, all table bookings associated with that booking will get deleted).
+10. User can cancel their table booking (Note: Deleting table booking won't affect their room booking status.)
+
+
+
 ## Some features of the application:-
 
 
