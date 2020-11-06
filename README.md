@@ -2,8 +2,8 @@
 
 ## Project Description:
 
-This is a small application of a Hotel Management System. The intuition behind building this was
-Sometimes it happens that the rooms get booked soon when one visits the place therefore user can make advance booking using this system. It saves user time in searching a room. The system is useful as it calculates an exact cost of rooms for requested number of days. This system is effective and saves time of users as well as the hotel staff and owners.
+This is a small application of a Hotel Management System. The intuition behind building this was that
+sometimes it happens that the rooms get booked soon when one visits the place therefore user can make advance booking using this system. It saves user time in searching a room. The system is useful as it calculates an exact cost of rooms for requested number of days. This system is effective and saves time of users as well as the hotel staff and owners.
 
 ## Tech Stack Used:
 
