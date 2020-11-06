@@ -1,6 +1,27 @@
 # Hotel Management System
 
-This is a small application of a Hotel Management System having the following features:  
+## Project Description:
+
+This is a small application of a Hotel Management System. The intuition behind building this was
+Sometimes it happens that the rooms get booked soon when one visits the place therefore user can make advance booking using this system. It saves user time in searching a room. The system is useful as it calculates an exact cost of rooms for requested number of days. This system is effective and saves time of users as well as the hotel staff and owners.
+
+## Tech Stack Used:
+
+	Programming Languages:
+	* Python3
+	* Javascript
+	* HTML5
+	* CSS
+
+	Framework:
+	* Django
+
+	Database:
+	* Sqlite3
+
+
+## Application features:  
+
 * **Registration and Login Page**: Any Customer can register an account and then login through the credentials
 * **Home Page**: It is the Welcome Page and contains some of the pictures of our Hotel and other links.
 * **Room Booking**: A form to book a room in hotel for particular dates.
