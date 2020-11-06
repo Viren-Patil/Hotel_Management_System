@@ -1,5 +1,12 @@
 # Hotel Management System
 
+## Team Members:
+
+	Batch: T3
+	111803155  Viren Patil
+	111803168  Vrinda Ahuja
+	
+
 ## Project Description:
 
 This is a small application of a Hotel Management System. The intuition behind building this was that
