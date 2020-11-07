@@ -10,6 +10,7 @@ from main.decorators import unauthenticated_user, allowed_users
 @unauthenticated_user
 def register_student(request):
     if request.method == 'POST':
+        # Fetching the form data
         form = UserRegisterFormStudent(request.POST)
         if form.is_valid():
             user = form.save()
@@ -25,6 +26,7 @@ def register_student(request):
 @login_required
 def customer(request):
     if request.method == 'POST':
+        # Fetching the form data
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = CustomerForm(request.POST, request.FILES, instance=request.user.profile)
 

@@ -7,6 +7,7 @@ check = []
 
 def present_or_future_checkin_date(value):
     if value < datetime.date.today():
+        check.append(value)
         raise forms.ValidationError("The date cannot be in the past!")
     else:
         check.append(value)

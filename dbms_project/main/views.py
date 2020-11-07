@@ -18,10 +18,11 @@ class RoomList(ListView):
     template_name = 'main/home_customer.html'
 
     def get(self, request):
-        booking_list = Booking.objects.filter(user=request.user)
+        # Total category of rooms present
         cat = ['YAC', 'NAC', 'DEL', 'KIN', 'QUE']
         roomlist = []
         for c in cat:
+            # Appending one room of each category to the roomlist
             roomlist.append(Room.objects.filter(category=c)[0])
 
         return render(request, self.template_name, {'title':'Home', 'room_list': roomlist, 'number_of_rooms': len(roomlist)})
@@ -47,13 +48,18 @@ class BookingView(FormView):
                 return i[1]
 
     def form_valid(self, form):
+        # Storing all the data entered in the form in the variable 'data'
         data = form.cleaned_data
+        # Filtering out the rooms of the particular category entered in the room booking form
         room_list = Room.objects.filter(category=data['room_category'])
+
+        # A list to maintain track of available rooms
         available_rooms = []
         for room in room_list:
             if check_availability(room, data['check_in'], data['check_out']):
                 available_rooms.append(room)
-        
+
+        # Checks if at all atleast 1 room of the provided category is available or not
         if len(available_rooms) > 0:
             room = available_rooms[0]
             booking = Booking.objects.create(
@@ -65,6 +71,8 @@ class BookingView(FormView):
             booking.save()
             messages.success(self.request, f'Your room has been booked!')
             return redirect('bookings')
+        
+        # If not available then a proper message is shown
         else:
             messages.error(
                 self.request,
@@ -79,7 +87,9 @@ class RestaurantView(FormView):
     template_name = 'main/restaurant_booking_form.html'
     
     def form_valid(self, form):
+        # Storing all the data entered in the form in the variable 'data'
         data = form.cleaned_data
+        # Filtering out the bookings of the particular user who filled the form
         room_booking_list = Booking.objects.filter(user=self.request.user)
         if len(room_booking_list) == 0:
             messages.error(self.request, f"You don't seem to have booked any room in our hotel! Go ahead and fill the form below to book a room!")
@@ -122,6 +132,7 @@ class FeedbackView(FormView):
     form_class = FeedbackForm
     template_name = 'main/feedback_form.html'
     def delete_entry(self, u, room):
+        # Filtering out the bookings of the particular user who is logged in
         bkngs = Booking.objects.filter(user=u)
         for b in bkngs:
             if b.check_out == datetime.date.today() and b.room.number == room:
@@ -150,6 +161,7 @@ class CancelTableBookingView(DeleteView):
 @login_required
 @allowed_users(allowed_roles=['Customer'])
 def payment(request):
+    # Filtering out the bookings of the particular user who is logged in
     bookings = Booking.objects.filter(user=request.user)
     payment_list = []
     empty = False
@@ -160,6 +172,7 @@ def payment(request):
         for bk in bookings:
             if datetime.date.today() >= bk.check_in and datetime.date.today() <= bk.check_out:
                 table_bill = 0
+                # Filter out the table bookings corresponding to a particular room booking
                 table = Restaurant.objects.filter(bkng=bk)
                 if len(table) == 0:
                     table_empty = True
@@ -175,6 +188,7 @@ def payment(request):
 @login_required
 @allowed_users(allowed_roles=['Customer'])
 def bookings(request):
+    # Filtering out the bookings of the particular user who is logged in
     bookings = Booking.objects.filter(user=request.user)
     table_booking_list = Restaurant.objects.filter(user=request.user)
     return render(request, 'main/bookings.html', {'title': 'My Bookings', 'bookings': bookings, 'table_booking_list': table_booking_list})
