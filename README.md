@@ -12,6 +12,14 @@
 This is a small application of a Hotel Management System. The intuition behind building this was that
 sometimes it happens that the rooms get booked soon when one visits the place therefore user can make advance booking using this system. It saves user time in searching a room. The system is useful as it calculates an exact cost of rooms for requested number of days. This system is effective and saves time of users as well as the hotel staff and owners.
 
+## How is it different from other Online sites?
+
+Other sites don't provide account facility to users
+We provide an account for every new customer. So that he/she won't need to fill important details again and again.
+The user just needs to login and start booking. The user can also reset password using Forgot Password option on login page.
+This ensures security, in the sense that no one can book a room just like that. The user needs to provide legitimate information
+while using our application. 
+
 ## Tech Stack Used:
 
 	Programming Languages:
@@ -42,10 +50,11 @@ sometimes it happens that the rooms get booked soon when one visits the place th
 * **Logout Page**
 
 ## Steps to run the application:
-1. Clone the github repository and cd to the folder 
-2. Run _pip install -r requirements.txt_
-3. Run _cd dbms\_project_
-4. Run _python manage.py runserver_
+1. Make sure you are on Windows Operating System
+2. Clone the github repository and cd to the folder 
+3. Run _pip install -r requirements.txt_
+4. Run _cd dbms\_project_
+5. Run _python manage.py runserver_
 
 ## ER Diagram
 
